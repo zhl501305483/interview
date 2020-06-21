@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            margin: 200px auto;
+            background-color: #000;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        0
+    </div>
+    <script>
+        var container = document.getElementsByClassName('container')[0];
+        container.onmousemove = throttle(function () {
+            this.innerText++;
+        },50)
+
+        function throttle(func, time) {
+            var timer = null;
+            return function () {
+                var self = this;
+                var arg = arguments;
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(function () {
+                    func.apply(self, arg)
+                }, time)
+            }
+        }
+    </script>
+</body>
+
+</html>

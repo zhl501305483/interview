@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button class="btn">求求你点一下</button>
+    <h2>0</h2>
+    <script>
+        var btn = document.getElementsByClassName('btn')[0];
+        var h2 = document.getElementsByTagName('h2')[0];
+
+        btn.onclick = throtte(function () {
+            h2.innerText ++;
+        }, 1000)
+
+        function throtte(fun, time) {
+            var firstTime = new Date().getTime();
+            return function () {
+                var self = this;
+                var arg = arguments;
+                var lastTime = new Date().getTime();
+                if (lastTime - firstTime > time) {
+                    console.log(firstTime,lastTime);
+                    fun.apply(self, arg)
+                    firstTime = lastTime;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

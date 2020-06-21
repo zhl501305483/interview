@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id="h2">0</h2>
+    <button id="btn">点击抢购！！</button>
+    <script>
+        btn.onclick = throttle(function () {
+            h2.innerText++;
+        }, 800)
+
+
+        function throttle(fn, time) {
+            var firstTime = new Date().getTime();
+            var lastTime;
+            return function () {
+                var self = this;
+                var arg = arguments;
+                lastTime = new Date().getTime();
+                if (lastTime - firstTime > time) {
+                    fn.apply(self, arg)
+                    firstTime = lastTime
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

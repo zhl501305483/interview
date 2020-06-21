@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #ddd;
+        }
+
+        .container {
+            width: 500px;
+            margin: 200px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px #333;
+        }
+
+        ul {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            margin-right: 60px;
+            cursor: pointer;
+        }
+
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <ul class="item">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul class="item">
+            <li>111</li>
+            <li class="active">2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul class="item">
+            <li>1</li>
+            <li>2</li>
+            <li class="active">3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="title">已选择</div>
+        <ul class="select">
+            <p>已选择</p>
+        </ul>
+    </div>
+
+
+
+    <script>
+        // var li = document.getElementsByTagName('li');
+        var list = document.getElementsByClassName('item')
+        var select = document.getElementsByClassName('select')[0];
+        init()
+        var tagAll;
+        function init() {
+            tagAll = document.getElementsByClassName('active');
+            var str = '';
+            for (let i = 0; i < tagAll.length; i++) {
+                str += `<li>${tagAll[i].innerText}</li>`;
+            }
+            select.innerHTML = str;
+        }
+        function bindEvent(e, a) {
+            if (e.target === a) {
+                return;
+            }
+            var tag = a.querySelector('.active');
+            if (tag) {
+                tag.classList.remove('active');
+            }
+            e.target.classList.add('active');
+            init();
+        }
+
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function (e) {
+                bindEvent(e, this)
+            }
+        }
+
+        select.onclick = function (e) {
+            if (e.target == this) {
+                return;
+            }
+            for (let i = 0; i < select.children.length; i++) {
+                if (e.target === select.children[i]) {
+                    tagAll[i].classList = ''
+                }
+            }
+            e.target.remove();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: #333;
+            color: #fff;
+            line-height: 300px;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">1</div>
+    <input type="text" id="text">
+    <script>
+        var demo = document.querySelector('.demo');
+        var text = document.querySelector('#text');
+        text.oninput = noShake(function(){
+            console.log(this.value);
+        },1000)
+        demo.onmousemove = noShake(function () {
+            this.innerText++;
+        }, 300)
+
+        function noShake(fn, time) {
+            var timer = null;
+            return function () {
+                var self = this;
+                var arg = arguments;
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(function () {
+                    fn.apply(self, arg)
+                }, time)
+            }
+        }
+    </script>
+</body>
+
+</html>

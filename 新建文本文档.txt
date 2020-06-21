@@ -1,0 +1,77 @@
+/***
+ * 
+ * 
+ * 
+ * 冒泡排序
+ * 
+ */
+
+
+function bubbleSort(data) {
+    let temp;
+    for (var i = 0; i < data.length - 1; i++) {
+        for (var j = 0; j < data.length - 1 - i; j++) {
+            if (data[j + 1] < data[j]) {
+                temp = data[j + 1];
+                data[j + 1] = data[j];
+                data[j] = temp;
+            }
+        }
+    }
+    console.log(data);
+}
+
+var arr = [1, 73, 98, 1, 5, 9, -14, 69, 2];
+bubbleSort(arr)
+
+
+
+
+/**
+ * 
+ * 选择排序(不稳定)
+ * 
+ */
+var arr = [4, 73, 98, 5, 1, 9, -14, 69, 2];
+
+function selectSort(data) {
+    let temp;
+    let index
+    for (var i = 0; i < data.length - 1; i++) {
+        index = i;
+
+        for (var j = i + 1; j < data.length; j++) {
+            if (data[j] < data[index]) {
+                index = j;
+            }
+        }
+        temp = data[i];
+        data[i] = data[index];
+        data[index] = temp;
+    }
+    console.log(data);
+}
+selectSort(arr)
+
+
+/**
+ * 
+ * 插入排序
+ */
+
+
+function insertSort(data) {
+    for (let i = 1; i < data.length; i++) {
+        let preIndex = i - 1;
+        let value = data[i];
+
+        while (preIndex >= 0 && data[preIndex] > value) {
+            data[preIndex + 1] = data[preIndex];
+            preIndex--;
+        }
+        data[preIndex + 1 ] = value;
+    }
+    console.log(data);
+}
+
+insertSort(arr)

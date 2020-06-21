@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="text">
+    <button id="btn">百度一下</button>
+
+    <script>
+        text.oninput = function () {
+            var oScript = document.createElement('script');
+            oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + text.value + '&cb=baidu';
+            document.body.appendChild(oScript);
+
+
+        }
+        function baidu(data) {
+            // console.log(data);
+            var data = data.s
+            console.log(data);
+        }   
+    </script>
+</body>
+
+</html>
