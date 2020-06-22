@@ -16,11 +16,31 @@ console.log(temp.next());
 console.log(temp.next());
 
 
-var obj = {
-    '0': 1,
-    '1': 2,
-    '2': 3,
-    length: 3
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const len = arr.length;
+
+var iterator = {
+    n: 0,
+    next() {
+        return this.n < arr.length ? {
+            value: arr[this.n++],
+            done: false
+        } : {
+            value: undefined,
+            done: true
+        }
+    }
 }
-let t = [...obj]
-console.log(t);
+
+for(let i = 0 ; i < len ; i++){
+    console.log(iterator.next().value);
+}
+
+
+
+
+
+
+
+

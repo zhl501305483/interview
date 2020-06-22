@@ -6,7 +6,7 @@ const info = {
 }
 // Symbol作为键值是非字符串，代表唯一值
 console.log(info);
-console.log(Object.keys(info)); //Symboll类型不可枚举，Object.keys：遍历对象的key键
+console.log(Object.keys(info)); //Symbol类型不可枚举，Object.keys：遍历对象的key键
 
 
 /**
