@@ -12,7 +12,7 @@ function* createFeiboIterator() {
             prev1 = value;
             yield value;
 
-
+ 
         }
         n++;
     }
