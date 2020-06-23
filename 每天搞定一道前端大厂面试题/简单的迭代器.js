@@ -1,13 +1,19 @@
-const makeIterator = function(arr){
-    let firstIndex = 0 ;
+const makeIterator = function (arr) {
+    let firstIndex = 0;
     return {
-        next(){
-            return firstIndex < arr.length ? {value: arr[firstIndex++] , done: false} : {value: undefined , done: true}
+        next() {
+            return firstIndex < arr.length ? {
+                value: arr[firstIndex++],
+                done: false
+            } : {
+                value: undefined,
+                done: true
+            }
         }
     }
 }
 
-const it = ['神话','星月']
+const it = ['神话', '星月']
 let temp = makeIterator(it)
 console.log(temp.next());
 console.log(temp.next());
@@ -33,14 +39,30 @@ var iterator = {
     }
 }
 
-for(let i = 0 ; i < len ; i++){
-    console.log(iterator.next().value);
+for (let i = 0; i < len; i++) {
+    console.log(iterator.next());
 }
 
 
 
 
+/**
+ * 
+ * 
+ */
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-
-
-
+var obj = {
+    n: 0,
+    next() {
+        return {
+            value: arr[this.n++],
+            done: this.n > arr.length
+        }
+    }
+}
+console.log(obj.next());
+console.log(obj.next());     
+console.log(obj.next());
+console.log(obj.next());
+console.log(obj.next());

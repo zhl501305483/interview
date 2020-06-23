@@ -24,12 +24,10 @@
         function throtte(fun, time) {
             var firstTime = new Date().getTime();
             return function () {
-                var self = this;
-                var arg = arguments;
                 var lastTime = new Date().getTime();
                 if (lastTime - firstTime > time) {
                     console.log(firstTime,lastTime);
-                    fun.apply(self, arg)
+                    fun.apply(this, arguments)
                     firstTime = lastTime;
                 }
             }

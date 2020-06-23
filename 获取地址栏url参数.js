@@ -23,7 +23,7 @@ function getParams(url, key) {
     var paramArr = param.split('&');
     for (let item of paramArr) {
         var num = item.indexOf('=');
-        if (item.substr(0, num) === key) {
+        if (item.substring(0, num) === key) {
             return item.substr(num + 1);
         }
     }
