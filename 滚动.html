@@ -23,7 +23,7 @@
             position: absolute;
             width: 100%;
             height: 800%;
-            transition: .5s;
+            transition: .8s;
             overflow: hidden;
         }
 
@@ -32,7 +32,7 @@
         }
 
         .red {
-            background-color: lightslategrey;
+            background-color: cyan;
         }
 
         .blue {
@@ -91,17 +91,14 @@
             }
             move();
         }
-        window.addEventListener('mousewheel', jieliu(function (e) {
-
-            if (e.wheelDelta === -120) {
+        window.onmousewheel = jieliu(function (e) {
+            var event = e || window.event;
+            if (event.wheelDelta === -120) {
                 console.log('down');
                 index++;
-
                 if (index > len - 1) {
                     index = len - 1;
                 }
-
-
                 move()
             } else {
                 console.log('up');
@@ -111,7 +108,7 @@
                 }
                 move()
             }
-        }, 500))
+        }, 500)
 
 
         function move() {

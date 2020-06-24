@@ -17,6 +17,8 @@
             if (!(this instanceof vElement)) {
                 return new vElement(tagName, prop, children)
             }
+            console.log(this);
+
             if (prop instanceof Array) {
                 this.children = this.prop;
                 this.prop = {};

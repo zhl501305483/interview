@@ -7,7 +7,7 @@ class Person {
         const [key, ...arg] = [...arguments];
         if (this.pool.has(key)) {
             const func = this.pool.get(key);
-            func.apply(this,arg)
+            func.apply(this, arg)
         }
     }
     addListener(key, func) {
@@ -15,14 +15,14 @@ class Person {
     }
     removeListener(key) {
         this.pool.delete(key)
-        console.log('已删除：',key);
+        console.log('已删除：', key);
     }
 }
 
 
 var p = new Person();
 p.addListener('one', function (data) {
-    console.log('发布新值啦！',data);
+    console.log('发布新值啦！', data);
 })
 
 
