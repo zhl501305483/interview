@@ -33,3 +33,7 @@ console.log(![] == 0); //true
 console.log({} == {}); //false
 console.log({} == !{}); //false    {}.toString = '[object Object]'    !{} = false   =>   Number('[object,Object]') 不等于 Number(false)
 
+/**
+ * 
+ * 
+ */
