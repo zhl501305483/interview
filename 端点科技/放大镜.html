@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .origin,
+        .container {
+            margin: 30px 10px;
+
+        }
+
+        .origin {
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            position: relative;
+            box-sizing: border-box;
+            border: 1px solid deeppink;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .origin img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            display: none;
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid;
+            overflow: hidden;
+        }
+
+        #mark {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: deeppink;
+            opacity: .5;
+            cursor: move;
+        }
+
+        #bigImg {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="origin">
+        <img src="https://user-gold-cdn.xitu.io/2020/4/15/1717b9212d32046e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+            alt="">
+    </div>
+    <div class="container">
+    </div>
+    <script>
+        var origin = document.getElementsByClassName('origin')[0];
+        var container = document.getElementsByClassName('container')[0];
+        var oW = origin.offsetWidth;
+        var oH = origin.offsetHeight;
+        var oL = origin.offsetLeft;
+        var oT = origin.offsetTop
+        origin.onmouseenter = function (e) {
+            var img = new Image();
+            var mark = document.createElement('div');
+            container.style.display = "inline-block";
+            img.id = 'bigImg'
+            mark.id = 'mark'
+            img.src = 'https://user-gold-cdn.xitu.io/2020/4/15/1717b9212d32046e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1';
+            container.appendChild(img);
+            origin.appendChild(mark);
+            document.body.appendChild(container);
+            setMark(mark, e)
+        }
+
+        function setMark(mark, e) {
+            var big = document.getElementById('bigImg')
+            var mark = document.getElementById('mark');
+            var event = e || window.event;
+            var mW = mark.offsetWidth
+            var mH = mark.offsetHeight
+            var l = event.clientX - oL - (mark.offsetWidth / 2)
+            var t = event.clientY - oT - (mark.offsetHeight / 2)
+            if (l < 0) {
+                l = 0;
+            } else if (l > (oW - mW)) {
+                l = oW - mW;
+
+            }
+
+            if (t < 0) {
+                t = 0
+
+            } else if (t > (oH - mH)) {
+                t = oH - mH
+
+            }
+            console.log(t);
+            mark.style.left = l + 'px';
+            mark.style.top = t + 'px';
+            big.style.left = - (l / oW * big.offsetWidth / 1.6) + 'px'
+            big.style.top = - (t / oH * big.offsetHeight / 1.6) + 'px'
+
+        }
+
+
+
+        origin.onmousemove = function (e) {
+            if (mark) {
+                setMark(mark, e)
+            }
+
+        }
+
+        origin.onmouseleave = function () {
+            var mark = document.querySelector('#mark');
+            mark.remove()
+            container.style.border = 'none'
+            container.innerHTML = ''
+        }
+    </script>
+</body>
+
+</html>

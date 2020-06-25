@@ -1,22 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>电子商务网站放大镜效果</title>
     <style type="text/css">
-        html, body, div img{  margin: 0;  padding: 0;  }
-        #tab {  position: relative;  width: 450px;  height: 450px;margin: 50px ;  background: #CDE074;  }
-        #mark {  position: absolute;  top: 0;  left: 0;  width: 100px;  height: 100px;  background: #B00000;  opacity: 0.5;  filter: alpha(opacity=50);  cursor: move;  }
-        #container{ position:absolute; height:450px; width:450px; background:pink; overflow:hidden;left: 350px;top: 0px}
-        #bigImg{ position:absolute; display:block; border:none;}
+        html,
+        body,
+        div img {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            margin: 50px;
+            background: #CDE074;
+        }
+
+        #mark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: #B00000;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            cursor: move;
+        }
+
+        #container {
+            position: absolute;
+            height: 450px;
+            width: 450px;
+            background: pink;
+            overflow: hidden;
+            left: 350px;
+            top: 0px
+        }
+
+        #bigImg {
+            position: absolute;
+            display: block;
+            border: none;
+        }
     </style>
 </head>
+
 <body>
-<div id="tab">
-    <img src="img/smallPeony.jpg" width="450" height="450" id="img1">
-</div>
-<div id="jiance"></div>
+    <div id="tab">
+        <img src="https://user-gold-cdn.xitu.io/2020/4/15/1717b9212d32046e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+            width="450" height="450" id="img1">
+    </div>
+    <div id="jiance"></div>
 </body>
+
 </html>
 <script type="text/javascript">
     var oTab = document.getElementById("tab");
@@ -31,9 +72,9 @@
         var container = document.createElement("div");
         container.id = "container";
         this.appendChild(container);
-        var bigImg=document.createElement("img");
-        bigImg.src="img/peony.jpg";
-        bigImg.id="bigImg";
+        var bigImg = document.createElement("img");
+        bigImg.src = "https://user-gold-cdn.xitu.io/2020/4/15/1717b9212d32046e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1";
+        bigImg.id = "bigImg";
         container.appendChild(bigImg);
         //当鼠标移近来的时候，动态创建一个DIV元素，id是mark
         var mark = document.createElement("div");
@@ -58,8 +99,8 @@
             this.removeChild(container);
         }
     };
-    var jiance=document.getElementById("jiance");
-    function setMark(mark,container,e) {
+    var jiance = document.getElementById("jiance");
+    function setMark(mark, container, e) {
         e = e || window.event;
         //上面是绑定事件的标配；
         //获取mark这个div的宽度和高度；并且让mark这个DIV显示在鼠标出现位置的正中间；
@@ -69,35 +110,36 @@
         var t = e.clientY - tabT - (mark.offsetHeight / 2);
         mark.style.left = l + "px";
         mark.style.top = t + "px";
-        container.style.left=tabW+10+"px";
-        container.style.top=0;
-//        bigImg.style.left="-"+(l/tabW*bigImg.width)+"px";
-//        bigImg.style.top="-"+(t/tabH*bigImg.height)+"px";
+        container.style.left = tabW + 10 + "px";
+        container.style.top = 0;
+        bigImg.style.left = - l / tabW * bigImg.width + "px";
+        bigImg.style.top = - t / tabH * bigImg.height + "px";
         //如果样式用上面的写，在IE678的时候有兼容性问题，应该改为下面的
-        if(l<=0){
-            bigImg.style.left=="0px";
-        }else{
-            bigImg.style.left="-"+l/tabW*bigImg.width+"px";
-        }
-        if(t<=0){
-            bigImg.style.top=="0px";
-        }else{
-            bigImg.style.top="-"+(t/tabH*bigImg.height)+"px";
-        }
-        console.log("====t::"+parseInt(t));
+        // if (l <= 0) {
+        //     bigImg.style.left == "0px";
+        // } else {
+        //     bigImg.style.left = "-" + l / tabW * bigImg.width + "px";
+        // }
+        // if (t <= 0) {
+        //     bigImg.style.top == "0px";
+        // } else {
+        //     bigImg.style.top = "-" + (t / tabH * bigImg.height) + "px";
+        // }
+        console.log(bigImg.style.left);
+        console.log("====t::" + parseInt(t));
         //下面是判断边界，当鼠标移到左边界和右边界的判断；
         if (l < 0) {
             mark.style.left = 0;
         } else if (l > (tabW - markW)) {
             mark.style.left = tabW - markW + "px";
-            bigImg.style.left="-"+(tabW-markW)/tabW*bigImg.width+"px";
+            bigImg.style.left = "-" + (tabW - markW) / tabW * bigImg.width + "px";
         }
         //当鼠标移到上边界和下边界的判断；
         if (t < 0) {
             mark.style.top = 0 + "px";
         } else if (t > (tabH - markH)) {
             mark.style.top = tabH - markH + "px";
-            bigImg.style.top="-"+(tabH-markH)/tabH*bigImg.height+"px";
+            bigImg.style.top = "-" + (tabH - markH) / tabH * bigImg.height + "px";
         }
     };
 </script>
