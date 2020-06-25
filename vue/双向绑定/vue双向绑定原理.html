@@ -39,6 +39,28 @@
             b: 2
         }
         observable(obj)
+        class Dep {
+            constructor() {
+                this.subs = [];
+            }
+            depend() {
+                if (Dep.target) {
+                    this.subs.push(Dep.target);
+
+                }
+            }
+            //通知订阅者更新
+            notify() {
+                this.subs.forEach(item => {
+                    item.update();
+                })
+            }
+        }
+        Dep.target = null;
+
+
+
+
         function observable(obj) {
             if (!obj || typeof obj !== 'object') {
                 return;

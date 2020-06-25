@@ -26,7 +26,7 @@ var arr = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
  * 方法二、使用reduce方法
  */
 var arr = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
-const fun = function (data) {
+function fun (data) {
   return data.reduce((prev, item) => {
     return prev.concat(Array.isArray(item) ? fun(item) : item)
   }, [])

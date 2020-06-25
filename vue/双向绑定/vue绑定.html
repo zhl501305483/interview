@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <h1 id="h1"></h1>
+    <button id="btn">验证双向绑定</button>
+    <script src="./observe.js"></script>
+    <script src="./watcher.js"></script>
+    <script>
+        var text = document.querySelector('#text');
+        var h1 = document.querySelector('#h1');
+        function MyVue(data, ele, exp) {
+            this.data = data;
+            observe(this.data);   //对数据进行观测
+            ele.innerHTML = this.data[exp];
+            new Watcher(this, exp, function (value, oldValue) {
+                console.log(oldValue);
+                ele.innerHTML = value;
+            })
+        }
+        var my = new MyVue({
+            content: 'Hello World'
+        }, h1, 'content')
+
+        text.oninput = function () {
+            my.data.content = this.value;
+        }
+
+
+
+
+        btn.onclick = function () {
+            changeDate();
+        }
+        //验证data变化
+        function changeDate() {
+            my.data.content = 'ZHL'
+        }
+    </script>
+</body>
+
+</html>
