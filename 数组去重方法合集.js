@@ -1,13 +1,13 @@
 // 数组去重：
 // 方法一
-var arr = [1,1,2,4,5,6,5,7.2];
-var newArr = arr.reduce(function(pre,value){
-    if(pre.includes(value)){
+var arr = [1, 1, 2, 4, 5, 6, 5, 7.2];
+var newArr = arr.reduce(function (pre, value) {
+    if (pre.includes(value)) {
         return pre;
-    }else{
+    } else {
         return pre.concat(value)
     }
-},[])
+}, [])
 console.log(newArr);
 
 // 方法二
@@ -64,17 +64,20 @@ console.log(newArr);
 // console.log(newArr);
 
 
-//方法五
+// //方法五
 // var arr = [2, 2, 5, 1, 8, 1, 9, 2, 8];
-// function unquire(a){
-//     for(let i = 0 ; i < a.length - 1; i ++){
-//         for(let j = i + 1 ; j < a.length ; j ++){
-//             if(a[j] === a[i]){
-//                 a.splice(j,1)
+
+// function unquire(a) {
+//     let temp = a;
+//     for (let i = 0; i < temp.length - 1; i++) {
+//         for (let j = i + 1; j < temp.length; j++) {
+//             if (temp[j] === temp[i]) {
+//                 temp.splice(j, 1)
 //             }
 //         }
 //     }
-//     console.log(a);
+//     console.log(temp);
+//     console.log(arr);
 // }
 // unquire(arr)
 

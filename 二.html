@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="table">
+
+    </table>
+    <script>
+        var a = [1, 2];
+        var b = [[10, 10], [20, 20], [30, 30]];
+        var thead = document.createElement('thead');
+        var tbody = document.createElement('tbody');
+        var tr = document.createElement('tr');
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        for (let i = 0; i < a.length; i++) {
+            var htd = document.createElement('td');
+            htd.innerHTML = a[i];
+            thead.appendChild(htd)
+        }
+        for (let i = 0; i < b.length; i++) {
+            var item = b[i];
+            var btr = document.createElement('tr');
+            for (let j = 0; j < item.length; j++) {
+                var btd = document.createElement('td');
+                btd.innerHTML = item[j];
+                btr.appendChild(btd)
+            }
+            tbody.appendChild(btr)
+        }
+    </script>
+</body>
+
+</html>

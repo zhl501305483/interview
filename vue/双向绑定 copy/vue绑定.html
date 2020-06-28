@@ -16,33 +16,20 @@
     <script>
         var text = document.querySelector('#text');
         var h1 = document.querySelector('#h1');
-        function MyVue(data, ele, exp) {
+        function myVue(data, el, exp) {
             this.data = data;
-            observe(this.data);   //对数据进行观测
-            ele.innerHTML = this.data[exp];
-            new Watcher(this, exp, function (value, oldValue) {
+            observe(this.data);
+            el.innerHTML = this.data[exp];
+            new Watcher(this, exp, function (value,oldValue) {
+                el.innerHTML = value;
                 console.log(oldValue);
-                ele.innerHTML = value;
             })
-            return this;
         }
-        var my = new MyVue({
-            content: 'Hello World'
+        var my = new myVue({
+            content: 'ZHY'
         }, h1, 'content')
-
-        text.oninput = function () {
+        text.oninput = function(){
             my.data.content = this.value;
-        }
-
-
-
-
-        btn.onclick = function () {
-            changeDate();
-        }
-        //验证data变化
-        function changeDate() {
-            my.data.content = 'ZHL'
         }
     </script>
 </body>
