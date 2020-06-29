@@ -93,7 +93,8 @@
         }
         window.onmousewheel = jieliu(function (e) {
             var event = e || window.event;
-            if (event.wheelDelta === -120) {
+            console.log(event);
+            if (event.wheelDelta === -120 || event.wheelDelta === -150) {
                 console.log('down');
                 index++;
                 if (index > len - 1) {
