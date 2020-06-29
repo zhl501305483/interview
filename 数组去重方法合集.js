@@ -65,21 +65,21 @@ console.log(newArr);
 
 
 // //方法五
-// var arr = [2, 2, 5, 1, 8, 1, 9, 2, 8];
+var arr = [2, 2, 5, 1, 8, 1, 9, 2, 8, 2];
 
-// function unquire(a) {
-//     let temp = a;
-//     for (let i = 0; i < temp.length - 1; i++) {
-//         for (let j = i + 1; j < temp.length; j++) {
-//             if (temp[j] === temp[i]) {
-//                 temp.splice(j, 1)
-//             }
-//         }
-//     }
-//     console.log(temp);
-//     console.log(arr);
-// }
-// unquire(arr)
+function unquire(a) {
+    let temp = a;
+    for (let i = 0; i < temp.length - 1; i++) {
+        for (let j = i + 1; j < temp.length; j++) {
+            if (temp[j] === temp[i]) {
+                temp.splice(j, 1)
+            }
+        }
+    }
+    console.log(temp);
+    console.log(a);
+}
+unquire(arr)
 
 
 //方法六： 通过new Set方法创建一个数据结构

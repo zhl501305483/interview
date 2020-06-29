@@ -38,12 +38,12 @@ fun(arr)
  * 方法三、
  */
 var arr = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
-let flag = arr.some((item) => Array.isArray(item));
-
-while (arr.some((item) => Array.isArray(item))) {
-  arr = [].concat(...arr)
-}
-console.log(arr);
+console.log([].concat(...arr));
+// let flag = arr.some((item) => Array.isArray(item));
+// while (arr.some((item) => Array.isArray(item))) {
+//   arr = [].concat(...arr)
+// }
+// console.log(arr);
 
 
 /**

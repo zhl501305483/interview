@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="demo"></div>
+    <script>
+        function isSelect(select, element) {
+            if (select.includes('.')) {
+                return Array.prototype.includes.call(element.classList, select.slice(1)) ? true : false
+            }
+        }
+        function myQuerySelector(select, element) {
+            if (!element || element == document) {
+                element = document.body;
+            }
+            var children = element.children;
+            var res = null;
+            for (const item of children) {
+                if (isSelect(select, item)) {
+                    return item;
+                }
+                res = myQuerySelector(select, item);
+                if (res) {
+                    return res;
+                }
+            }
+            return null;
+        }
+        var a = myQuerySelector('.demo');
+    </script>
+</body>
+
+</html>
