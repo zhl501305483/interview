@@ -7,17 +7,17 @@ function Person(name, age, sex) {
     this.name = name;
     this.age = age;
     this.sex = sex;
-    return 1;
+    return 1
 };
 
-// function _new(fn, ...arg) {
-//     var obj = Object.create(fn.prototype);
-//     var res = fn.apply(obj, arg);
-//     return res instanceof Object ? res : obj;
-// }
+function _new(fn, ...arg) {
+    var obj = Object.create(fn.prototype);
+    var res = fn.apply(obj, arg);
+    return res instanceof Object ? res : obj;
+}
 
 
 
-var p = new Person('zhl', 14, 'male');
+// var p = new Person('zhl', 14, 'male');
+var p = _new(Person, 'zhl', 'male')
 console.log(p);
-

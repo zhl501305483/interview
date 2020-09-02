@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = `
+<div>
+    <p>
+        <span></span>
+    </p>
+    <i></i>
+</div>
+`;
+
+    /*
+    {
+      type: 'div'
+      children: [
+        {
+          type: 'p',
+          children: [
+            {
+              type: 'span'
+            }
+          ]
+        } 
+      ]
+    }
+    */
+
+
+    // const body = document.body
+    // body.innerHTML = str
+    var dom = document.createElement('div')
+    dom.innerHTML = str
+    var temp = {}
+    function outputObj(data) {
+      for (let item of data.children) {
+        temp.type = item.tagName.toLowerCase()
+        temp.children = []
+        if (item.children.length) {
+          temp.children.push(outputObj(item))
+        }
+        console.log(temp)
+      }
+      return temp
+    }
+    // var div = dom.children[0]
+    var s = outputObj(dom)
+  </script>
+</body>
+
+</html>

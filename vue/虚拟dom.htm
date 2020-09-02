@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function vElement(tag, prop, children) {
+            this.tag = tag;
+            this.prop = prop;
+            this.children = children;
+            this.count = 0;
+            if (!(this instanceof vElement)) {
+                return new vElement(tag, prop, children);
+            }
+            if (Array.isArray(prop)) {
+                this.children = this.prop;
+                this.prop = {};
+            }
+            this.children.forEach((item, index) => {
+                if (item instanceof vElement) {
+                    this.count += item.count;
+                } else {
+                    this.count++;
+                }
+            })
+        }
+
+        vElement.prototype.render = function () {
+            var ele = document.createElement(this.tag);
+            var tempDom;
+            for (const key in this.prop) {
+                ele.setAttribute(key, this.prop[key])
+            }
+            this.children.forEach(item => {
+                if (item instanceof vElement) {
+                    tempDom = item.render();
+                } else {
+                    tempDom = document.createTextNode(item)
+                }
+                ele.appendChild(tempDom);
+            })
+            return ele;
+        }
+
+
+
+
+
+        var dom = vElement('div', { class: 'demo', id: 'zhl' }, ['hello world', 'www', vElement('p', { class: "demo3" }, ['我是p标签'])])
+        
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-//订阅者Watcher
+//观察者Watcher
 class Watcher {
     constructor(vm, exp, cb) {
         this.vm = vm;

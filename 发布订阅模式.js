@@ -1,3 +1,4 @@
+// Event Channel (调度中心)
 class Person {
     constructor() {
         this.pool = new Map();
@@ -20,6 +21,7 @@ class Person {
 }
 
 
+// Subscriber(订阅者)
 var p = new Person();
 p.addListener('one', function (data) {
     console.log('发布新值啦！', data);

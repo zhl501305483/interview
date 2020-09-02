@@ -52,7 +52,7 @@ function merge(data1, data2) {
     //     return item
     // })
 
-    for(let i = 0 ; i <mergeArr.length;i++){
+    for(let i = 0 ; i < mergeArr.length;i++){
         if(mergeArr[i].includes('3')){
             mergeArr[i] = mergeArr[i].slice(0,1)
         }
